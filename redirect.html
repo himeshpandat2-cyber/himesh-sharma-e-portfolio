@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting | Himesh Sharma</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: #17202a;
+        background: #f7f8fb;
+      }
+
+      main {
+        width: min(460px, calc(100% - 32px));
+        padding: 28px;
+        border: 1px solid #dbe3ea;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 24px 70px rgba(30, 48, 72, 0.12);
+      }
+
+      a {
+        color: #2457a6;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Redirecting...</h1>
+      <p id="message">Opening Himesh Sharma's portfolio link.</p>
+      <a id="fallback" href="https://github.com/himeshpandat2-cyber">Continue manually</a>
+    </main>
+
+    <script>
+      const destinations = {
+        github: "https://github.com/himeshpandat2-cyber",
+        repositories: "https://github.com/himeshpandat2-cyber?tab=repositories",
+        linkedin: "https://www.linkedin.com/in/himesh-sharma-070956324",
+        email: "mailto:himeshpandat2@gmail.com"
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const target = destinations[params.get("to")] || destinations.github;
+      const fallback = document.querySelector("#fallback");
+
+      fallback.href = target;
+      setTimeout(() => {
+        window.location.href = target;
+      }, 650);
+    </script>
+  </body>
+</html>
